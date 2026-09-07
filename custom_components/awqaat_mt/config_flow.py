@@ -13,6 +13,7 @@ from homeassistant.data_entry_flow import FlowResult
 from .const import CONF_COLUMNS, CONF_DATE_COLUMN, CONF_NAME, CONF_SHEET_URL, DOMAIN
 from .sheet_client import (
     SheetError,
+    default_friendly_name,
     fetch_csv_text,
     normalize_to_csv_url,
     parse_headers,
@@ -60,7 +61,9 @@ class _SheetFlowMixin:
         defaults = defaults or {}
         fields = {}
         for header in selected:
-            fields[vol.Optional(header, default=defaults.get(header, header))] = str
+            fields[
+                vol.Optional(header, default=defaults.get(header, default_friendly_name(header)))
+            ] = str
         return vol.Schema(fields)
 
 
