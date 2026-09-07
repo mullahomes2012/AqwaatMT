@@ -1,0 +1,53 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add an Awqaat MT sheet",
+        "description": "Give this sheet a name (e.g. Quba, 18 Degrees) and paste its published sheet link (File > Share > Publish to web). {error_detail}",
+        "data": {
+          "name": "Name",
+          "sheet_url": "Published sheet URL"
+        }
+      },
+      "columns": {
+        "title": "Choose columns",
+        "description": "Toggle on every column you want as an entity in Home Assistant. Anything left off is ignored."
+      },
+      "naming": {
+        "title": "Name your entities",
+        "description": "Give each entity whatever name you want — it doesn't need to match the sheet's column header."
+      }
+    },
+    "error": {
+      "sheet_error": "Couldn't read that sheet: {error_detail}",
+      "no_columns_selected": "Select at least one column to continue."
+    },
+    "abort": {
+      "already_configured": "This sheet and name combination is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Sheet source",
+        "description": "Update the name or published sheet link. {error_detail}",
+        "data": {
+          "name": "Name",
+          "sheet_url": "Published sheet URL"
+        }
+      },
+      "columns": {
+        "title": "Choose columns",
+        "description": "Toggle on every column you want as an entity. Existing choices are pre-filled."
+      },
+      "naming": {
+        "title": "Name your entities",
+        "description": "Rename anything — existing names are pre-filled."
+      }
+    },
+    "error": {
+      "sheet_error": "Couldn't read that sheet: {error_detail}",
+      "no_columns_selected": "Select at least one column to continue."
+    }
+  }
+}
