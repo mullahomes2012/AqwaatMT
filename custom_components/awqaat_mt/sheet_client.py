@@ -131,6 +131,20 @@ def parse_sheet_date(raw: str) -> date | None:
     return None
 
 
+def default_friendly_name(header: str) -> str:
+    """Turn a raw sheet header into a sensible default entity name.
+
+    Replaces underscores with spaces, capitalises each word, and renames
+    any standalone 'jamaat' word to 'Salaah'. Still just a starting point —
+    the naming step always lets you overwrite it per column.
+    """
+    text = header.replace("_", " ").strip()
+    text = re.sub(r"(?i)\bjamaat\b", "Salaah", text)
+    words = text.split()
+    words = [w if w == "Salaah" else w.capitalize() for w in words]
+    return " ".join(words) if words else header
+
+
 def parse_sheet_time(raw: str) -> tuple[int, int] | None:
     """Parse a time cell (HH:MM or HH:MM:SS) into (hour, minute). None if blank/unparseable."""
     raw = raw.strip()
